@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { loadUserRequest } from '../../store/ducks/usuarios/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import './style.scss'
 
 
 const Login = () => {
@@ -22,9 +23,14 @@ const Login = () => {
     };
 
     return(
-        <div>
-            <h1>VEM BEES</h1>
+        <div className="bg-fundo">
+            
+        <div className='form-login'>
+  
+            <h1>Entrar</h1>
+            
             <input type='email' placeholder='Type your e-mail' ref={inputEmail} />
+            <br />
             <input type='password' placeholder='Type your password' ref={inputPassword} />
             <button onClick={login}>Submit</button>
             
@@ -32,7 +38,8 @@ const Login = () => {
                 logged && 
                 <Redirect to='/home' />
             }
-            
+         
+            </div>
         </div>
 
     )

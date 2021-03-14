@@ -8,7 +8,6 @@ import { GrLogout } from 'react-icons/gr'
 import './style.scss';
 
 
-
 const Sidebar = () => {
 
     const [sidebar, setSidebar] = useState(false);
@@ -19,18 +18,19 @@ const Sidebar = () => {
 
     const clear = () => { localStorage.clear()}
 
-    
-
    
     return(
         <div className='container'>
             <IconContext.Provider value={{color: 'black'}}>
                 <div className='navbar'>
                     <Link to='#'>
-                        <FaIcons.FaBars onClick={showSidebar} />
+                        <FaIcons.FaBars size={'30px'} onClick={showSidebar} />
                     </Link>
                     <h3 className='username'>Olá, {userName}</h3>
-                    <a href='/'><GrLogout onClick={() => clear()} /></a>
+                    <a href='/'>
+                        Sair 
+                        <GrLogout onClick={() => clear()} />
+                    </a>
                 </div>
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                     <ul className='nav-menu-items' onClick={showSidebar}>

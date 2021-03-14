@@ -1,0 +1,23 @@
+// .form-container{
+//     background-color: black;
+//     height: 757px;
+//     width: 100%;
+   
+// }
+
+.bg-fundo {
+    background-image: url('./bees.jpg');
+    background-attachment: fixed;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    border-radius: 40px;
+    height: 700px; 
+    top: 3%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+    overflow: hidden;
+}

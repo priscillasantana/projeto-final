@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { newUserRequest } from '../../store/ducks/usuarios/action';
 import { useDispatch } from 'react-redux';
+import Sidebar from '../../components/sidebar';
 
 
 const Cadastrar = () => {
@@ -25,6 +26,8 @@ const Cadastrar = () => {
 
     return(
         <div>
+            <Sidebar />
+
             <h1>Novo funcionário topzera</h1>
             <input type='email' placeholder='Type your e-mail' ref={inputEmail} />
             <input type='password' placeholder='Type your password' ref={inputPassword} />

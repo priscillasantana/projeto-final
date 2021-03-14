@@ -26,6 +26,7 @@ const Produtos = () => {
     return(
         <div>
             <Sidebar />
+            
             <h1>Novo produtinho arrasador topzera</h1>
             <input type='text' placeholder='Nome do produto' ref={inputTitle} />
             <input type='text' placeholder='Preço' ref={inputPrice} />

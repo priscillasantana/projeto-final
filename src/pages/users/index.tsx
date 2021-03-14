@@ -29,7 +29,7 @@ const User = () => {
             <h1>Usuários</h1>
             { 
                 user?.map((user: any) => (
-                    <div key={user.id}>
+                    <div key={user.id} className='user'>
                         
                         <h2>nome - {user.name}</h2>
                         <h2>função - {user.role}</h2>
