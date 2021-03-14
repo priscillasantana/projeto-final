@@ -44,6 +44,18 @@
 ### Login editor
 - email: mauricio@google.com | senha: 123123
 
+## Tecnologias utilizadas:
+
+- React.js
+
+- Typescript
+
+- Redux
+
+- Redux saga
+
+
+
 ## Link do backend:
 https://github.com/jenicarvalho/fake-api-emporio
 
@@ -57,12 +69,4 @@ npm install
 json-server db.json -m ./node_modules/json-server-auth -r routes.json --port 4000
 ```
 
-## Tecnologias utilizadas:
 
-- React.js
-
-- Typescript
-
-- Redux
-
-- Redux saga
