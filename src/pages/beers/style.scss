@@ -1,0 +1,20 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 5%;
+    gap: 20px;
+
+    .products{
+        border: 2px solid;
+        align-content: center;
+        border-radius: 10%;
+        padding: 20px;
+
+        .beers{
+            max-width: 200px;
+            max-height: 200px;
+            width: auto;
+            height: auto;
+        }
+    }
+}

@@ -1,19 +1,14 @@
 import { call, put } from 'redux-saga/effects';
 import usersService from '../../../services/users-services';
 import { decodeToken } from 'react-jwt'
-import { deleteUserFailure, deleteUserSuccess, getUserFailure,
-        getUserSuccess,
-        loadUserFailure,
-        loadUserSuccess,
-        newUserFailure,
-        newUserSuccess } from './action';
+import * as UserAction from './action';
 
 
 export function* getUsuarios(action: any): any {
 
     try {
         const response: any = yield call(usersService.loadUsuario, action.payload)
-        yield put(loadUserSuccess(response.data))
+        yield put(UserAction.loadUserSuccess(response.data))
         yield localStorage.setItem('token', response.data.accessToken)
 
         const tokenDecoded = decodeToken(response.data.accessToken)
@@ -24,7 +19,7 @@ export function* getUsuarios(action: any): any {
 
     } catch (err) {
         console.log(err)
-        yield put(loadUserFailure())
+        yield put(UserAction.loadUserFailure())
     }
 };
 
@@ -33,10 +28,10 @@ export function* setUsuarios(): any {
 
     try {
         const response: any = yield call(usersService.getUsuario) 
-        yield put(getUserSuccess(response.data))
+        yield put(UserAction.getUserSuccess(response.data))
     } catch (err) {
         console.log(err)
-        yield put(getUserFailure())
+        yield put(UserAction.getUserFailure())
     }
 };
 
@@ -45,10 +40,10 @@ export function* newUsuarios(action: any): any {
 
     try {
         const response: any = yield call(usersService.newUsuario, action.payload)
-        yield put(newUserSuccess(response.data))
+        yield put(UserAction.newUserSuccess(response.data))
     } catch (err) {
         console.log(err)
-        yield put(newUserFailure())
+        yield put(UserAction.newUserFailure())
     }
 };
 
@@ -57,10 +52,10 @@ export function* deleteUsuario(action: any): any {
 
     try{
         yield call(usersService.deleteUsuario, action.payload)
-        yield put(deleteUserSuccess())
+        yield put(UserAction.deleteUserSuccess())
     } catch (err) {
         console.log(err)
-        yield put (deleteUserFailure())
+        yield put (UserAction.deleteUserFailure())
     }
 };
 

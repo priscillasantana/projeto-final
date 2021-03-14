@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as UserActions from '../../store/ducks/usuarios/action';
+import Sidebar from '../../components/sidebar';
 
 
 const User = () => {
@@ -24,6 +25,7 @@ const User = () => {
 
     return(
         <div>
+            <Sidebar />
             <h1>Usuários</h1>
             { 
                 user?.map((user: any) => (

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { loadUserRequest } from '../../store/ducks/usuarios/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';

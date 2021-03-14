@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Sidebar from '../../components/sidebar';
 import * as BeerActions from '../../store/ducks/beers/action';
+import './style.scss'
 
 const Beer = () => {
 
@@ -27,14 +29,21 @@ const Beer = () => {
 
     return (
         <div>
+
+            <Sidebar />
+
             <h1>produtos</h1>
+                    <div className='grid'>
+                        
 
             {
                 beer?.map((beer: any) => (
-                    <div key={beer.id}>
+                    <div key={beer.id} className='products'>
+
                         <h3>{beer.title}</h3>
-                        <span></span> 
-                        <img src={beer.image} alt={beer.description} />
+ 
+                        <img src={beer.image} alt={beer.description} className='beers' />
+                        
                         <p className='price'> {beer.description}  <br />
                         {beer.price}
                         </p>
@@ -47,6 +56,7 @@ const Beer = () => {
                     </div>
                 ))
             }
+                    </div>
         </div>
     )
 }
