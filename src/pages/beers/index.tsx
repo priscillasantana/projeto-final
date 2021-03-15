@@ -2,7 +2,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Sidebar from '../../components/sidebar';
 import * as BeerActions from '../../store/ducks/beers/action';
-import './style.scss'
+import './style.scss';
+import { FaPlus } from 'react-icons/fa';
 
 const Beer = () => {
 
@@ -26,16 +27,21 @@ const Beer = () => {
         dispatch(BeerActions.loadBeerRequest())
       }
 
-
     return (
         <div>
 
             <Sidebar />
 
+            <a href='/newbeer' className='icon-link'>
+                <FaPlus size='2em' />
+                <br />
+                Novo produto
+            </a>
+
             <h1>produtos</h1>
+
                     <div className='grid'>
                         
-
             {
                 beer?.map((beer: any) => (
                     <div key={beer.id} className='products'>
@@ -47,9 +53,10 @@ const Beer = () => {
                         <p className='price'> {beer.description}  <br />
                         {beer.price}
                         </p>
+                        
                        { 
                             userRole === 'admin' &&
-                            <button onClick={() => deleteBeer((beer.id))}>
+                            <button className='btn' onClick={() => deleteBeer((beer.id))}>
                                 Excluir
                             </button>
                         }

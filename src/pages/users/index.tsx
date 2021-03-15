@@ -2,11 +2,15 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import * as UserActions from '../../store/ducks/usuarios/action';
 import Sidebar from '../../components/sidebar';
+import { Redirect } from 'react-router';
+import { BsFillPersonPlusFill } from 'react-icons/bs';
 
 
 const User = () => {
 
     const user = useSelector((state: any) => state.reducerUser.user)
+
+    const userRole = localStorage.getItem('userRole')
 
     const dispatch = useDispatch()
 
@@ -25,7 +29,15 @@ const User = () => {
 
     return(
         <div>
+            { 
+                userRole !== 'admin' &&
+                <Redirect to='/home' />
+            }
             <Sidebar />
+            <a href='/newuser' className='icon-link'>
+                <BsFillPersonPlusFill size='2em' />
+                Adicionar usuário
+            </a>
             <h1>Usuários</h1>
             { 
                 user?.map((user: any) => (

@@ -1,8 +1,8 @@
-import { useRef } from 'react'
+import { useRef } from 'react';
 import { loadUserRequest } from '../../store/ducks/usuarios/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './style.scss'
+import './style.scss';
 
 
 const Login = () => {
@@ -27,12 +27,11 @@ const Login = () => {
         <div className="center-content">
             <div className='form-login'>
                 <div className="bg-fundo"></div>
-                    <h1>Entrar</h1>
+                    <h1 className='login-title'>Painel administrativo</h1>
                     
-                    <input type='email' placeholder='Type your e-mail' ref={inputEmail} />
-                    <br />
-                    <input type='password' placeholder='Type your password' ref={inputPassword} />
-                    <button onClick={login}>Submit</button>
+                    <input className='input' type='email' placeholder='Digite seu e-mail' ref={inputEmail} />
+                    <input className='input' type='password' placeholder='Digite sua senha' ref={inputPassword} />
+                    <button className='btn' onClick={login}>Submit</button>
                     
                     {
                         logged && 

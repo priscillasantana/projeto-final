@@ -2,7 +2,7 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
-import * as BsIcons from "react-icons/bs";
+import { GrLogout } from "react-icons/gr";
 
 
 export const SidebarData = [
@@ -13,27 +13,21 @@ export const SidebarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Products',
+        title: 'Produtos',
         path: '/products',
         icon: <IoIcons.IoMdBeer />,
         cName: 'nav-text'
     },
     {
-        title: 'New Beer',
+        title: 'Cadastrar cerveja',
         path: '/newbeer',
         icon: <FaIcons.FaPlusCircle />,
         cName: 'nav-text'
     },
     {
-        title: 'Users',
-        path: '/users',
-        icon: <BsIcons.BsFillPersonLinesFill />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'New User',
-        path: '/newuser',
-        icon: <BsIcons.BsFillPersonPlusFill />,
+        title: 'Sair',
+        path: '/',
+        icon: <GrLogout />,
         cName: 'nav-text'
     },
 ];

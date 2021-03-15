@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { newBeerRequest } from "../../store/ducks/beers/action";
 import Sidebar from '../../components/sidebar';
+import { IoMdBeer } from 'react-icons/io';
 
 const Produtos = () => {
     
@@ -26,13 +27,22 @@ const Produtos = () => {
     return(
         <div>
             <Sidebar />
-            
-            <h1>Novo produtinho arrasador topzera</h1>
-            <input type='text' placeholder='Nome do produto' ref={inputTitle} />
-            <input type='text' placeholder='Preço' ref={inputPrice} />
-            <input type='text' placeholder='Descrição' ref={inputDescription} />
-            <input type='text' placeholder='Image' ref={inputImage} />
-            <button onClick={cadastro}>Cadastrar</button>
+
+            <a href='/products' className='icon-link'>
+                <IoMdBeer size='2em' />
+                Produtos
+            </a>
+
+            <div className="inputs-form">
+
+                <h1>Novo produto</h1>
+                <input className='input' type='text' placeholder='Nome do produto' ref={inputTitle} required />
+                <input className='input' type='text' placeholder='Preço' ref={inputPrice} required />
+                <input className='input' type='text' placeholder='Descrição' ref={inputDescription} required />
+                <input className='input' type='url' placeholder='Url da imagem' ref={inputImage} required />
+                <button className='btn' onClick={cadastro}>Cadastrar</button>
+
+            </div>
         </div>
 
     )

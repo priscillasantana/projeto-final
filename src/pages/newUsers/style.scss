@@ -1,0 +1,23 @@
+.inputs-form {
+    display: grid;
+    grid-template-rows: 100px 40px 40px 40px;
+    grid-gap: 15px;
+    border-radius: 10px;
+    width: 400px;
+    height: 600px;
+    margin: 35px auto 0;
+    background-color: black;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 10px;
+    text-align: center;
+}
+
+.icon-link {
+    position: absolute;
+    margin-left: 90%;
+    margin-top: 10px;
+    font-size: 22px;
+    padding-right: 50px;
+}

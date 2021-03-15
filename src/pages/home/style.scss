@@ -1,24 +1,35 @@
 .container-home {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 20px 200px;
+    margin: 20px 500px;
 
     .home-item{
         width: 200px;
-        height: 200px;
+        height: 270px;
         border: 1px solid;
-        border-radius: 20px;
-        align-content: center;
-        background-color: black;
-        color: white;
-        padding: 20px;
-        justify-content: center;
-        display: flex;
         align-items: center;
+        justify-content: center;
+        display: grid;
+        grid-template-rows: 100px 40px 40px 60px;
+        grid-gap: 10px;
+        border-radius: 10px;
+        padding-top: 50px;
+        line-height: 45px;
+        background-color: #ffd041e3;
     }
 }
 
-h1 {
+.titulo {
     font-weight: bolder;
     margin-left: 80%;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+.user-home{
+    text-align: center;
 }

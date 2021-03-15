@@ -2,6 +2,9 @@ import { useRef } from 'react';
 import { newUserRequest } from '../../store/ducks/usuarios/action';
 import { useDispatch } from 'react-redux';
 import Sidebar from '../../components/sidebar';
+import { Redirect } from 'react-router';
+import { FaUserAlt } from 'react-icons/fa';
+import './style.scss';
 
 
 const Cadastrar = () => {
@@ -12,6 +15,8 @@ const Cadastrar = () => {
     const inputRole = useRef<HTMLInputElement>(null)
 
     const dispatch = useDispatch();
+
+    const userRole = localStorage.getItem('userRole')
 
     const cadastro = () => {
         const email = inputEmail.current?.value
@@ -26,16 +31,31 @@ const Cadastrar = () => {
 
     return(
         <div>
+
+            { 
+                userRole !== 'admin' &&
+                <Redirect to='/home' />
+            }
+
             <Sidebar />
 
-            <h1>Novo funcionário topzera</h1>
-            <input type='email' placeholder='Type your e-mail' ref={inputEmail} />
-            <input type='password' placeholder='Type your password' ref={inputPassword} />
-            <input type='text' placeholder='Type your name' ref={inputName} />
-            <input type='text' placeholder='Type your role' ref={inputRole} />
-            <button onClick={cadastro}>Cadastrar</button>
-        </div>
+            <a href='/users' className='icon-link'>
+                <FaUserAlt size='1.5em' />
+                Usuários
+            </a>
 
+            <div className='inputs-form'>
+                <h1>Novo funcionário</h1>
+
+                <input className='input' type='email' placeholder='E-mail' ref={inputEmail} required />
+                <input className='input' type='password' placeholder='Senha inicial' ref={inputPassword} required />
+                <input className='input' type='text' placeholder='Nome' ref={inputName} required />
+                <input className='input' type='text' placeholder='Editor ou Admin?' ref={inputRole} required />
+                
+                <button className='btn' onClick={cadastro}>Cadastrar</button>
+            </div>
+
+        </div>
     )
 };
 

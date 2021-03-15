@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadBeerRequest } from '../../store/ducks/beers/action';
 import { getUserRequest } from '../../store/ducks/usuarios/action';
 import Sidebar from '../../components/sidebar';
-import { FaUserAlt } from 'react-icons/fa';
+import { FaUserAlt, FaPlus } from 'react-icons/fa';
 import { IoBeerSharp } from 'react-icons/io5';
-import './style.scss'
+import { BsFillPersonPlusFill } from 'react-icons/bs';
+import './style.scss';
 
 
 const Home = () => {
@@ -13,6 +14,8 @@ const Home = () => {
     const beer = useSelector((state: any) => state.reducerBeer.beers)
 
     const user = useSelector((state: any) => state.reducerUser.user)
+
+    const userRole = localStorage.getItem('userRole')
 
     const dispatch = useDispatch()
 
@@ -32,19 +35,48 @@ const Home = () => {
         <div>
             <Sidebar />
 
-            <h1>Home</h1>
+            <h1 className='titulo'>Home</h1>
 
             <div className='container-home'>
+                
                 <div className='home-item'>
-                    <IoBeerSharp size={'4em'} />
-                    <h2>Produtos cadastrados</h2>
-                    <h3>{beerSize}</h3>
+                    <div className='user-home'>
+                        <a href='/products' className='linkdiv'>
+                            <IoBeerSharp size={'4em'} />
+                            <h2>Total de produtos</h2>
+                            <h2>{beerSize}</h2>
+                        </a>
+                    </div>
+                    <div>
+                            <br />
+                            <a href='/newbeer'><FaPlus /> Cadastrar novo produto</a>
+                    </div>
                 </div>
+                
 
                 <div className='home-item'>
-                    <FaUserAlt size={'3em'}/> <br />
-                    <h2>Usuários</h2> <br></br>
-                    <h3>{userSize}</h3>
+
+                    { userRole === 'admin' ? 
+                        <a href='/users'>
+                            <FaUserAlt size={'3em'} />
+                            <h2>Total de usuários</h2> 
+                            <h2>{userSize}</h2>
+                        </a> 
+                        : 
+                        <div className='user-home'>
+                            <FaUserAlt size={'3em'} />
+                            <h2>Total de usuários</h2> 
+                            <h2>{userSize}</h2>
+                        </div>
+                    }
+
+                    { userRole === 'admin' && 
+                    <div>
+                        <br />
+                        <a href='/newuser'><BsFillPersonPlusFill /> Cadastrar novo usuário</a>
+                    </div>
+                    }
+
                 </div>
             </div>
 

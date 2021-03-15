@@ -11,11 +11,12 @@
     bottom: 0;
     opacity: 0.6;
     z-index: -1;
-
 }
 
 .form-login {
-
+    display: grid;
+    grid-template-rows: 100px 40px 40px 60px;
+    grid-gap: 10px;
     border-radius: 10px;
     width: 400px;
     height: 600px;
@@ -23,12 +24,44 @@
     color: white;
     position: relative;
     overflow: hidden;
+    padding: 100px 10px;
 }
 
 .center-content{
     display: flex;
-    align-items: center; // horizontalmente
-    justify-content: center; //verticalmente
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
     width: 100vw;
-    }
+}
+
+.input {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    outline: none;
+}
+
+.login-title{
+    margin: 0 auto;
+    color: black;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 36px;
+}
+
+.btn {
+    background-color: #FFBF00;
+    width: 100px;
+    height: 50px;
+    border-radius: 9px;
+    margin: 0 auto;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn:hover {
+    background-color:#eecd6b;
+}
