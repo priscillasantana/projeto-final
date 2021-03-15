@@ -23,22 +23,22 @@ const Login = () => {
     };
 
     return(
-        <div className="bg-fundo">
-            
-        <div className='form-login'>
-  
-            <h1>Entrar</h1>
-            
-            <input type='email' placeholder='Type your e-mail' ref={inputEmail} />
-            <br />
-            <input type='password' placeholder='Type your password' ref={inputPassword} />
-            <button onClick={login}>Submit</button>
-            
-            {
-                logged && 
-                <Redirect to='/home' />
-            }
-         
+        
+        <div className="center-content">
+            <div className='form-login'>
+                <div className="bg-fundo"></div>
+                    <h1>Entrar</h1>
+                    
+                    <input type='email' placeholder='Type your e-mail' ref={inputEmail} />
+                    <br />
+                    <input type='password' placeholder='Type your password' ref={inputPassword} />
+                    <button onClick={login}>Submit</button>
+                    
+                    {
+                        logged && 
+                        <Redirect to='/home' />
+                    }
+                
             </div>
         </div>
 
