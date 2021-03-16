@@ -1,0 +1,37 @@
+.container-user {
+    max-width: 900px;
+    margin: 0 auto;
+
+    .trash {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        align-items: center;
+    }
+    
+    .grid-user {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 800px);
+        gap: 30px;
+        margin: 0 auto;
+        max-width: 900px;
+        align-content: center;
+        justify-content: center;
+    
+        .user {
+            border: 2px solid;
+            align-content: center;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            font-size: 13px;
+            height: 100px;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffd041e3;
+        }
+    
+    }
+
+}

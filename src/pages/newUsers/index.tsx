@@ -1,63 +1,83 @@
-import { useRef } from 'react';
-import { newUserRequest } from '../../store/ducks/usuarios/action';
-import { useDispatch } from 'react-redux';
-import Sidebar from '../../components/sidebar';
-import { Redirect } from 'react-router';
-import { FaUserAlt } from 'react-icons/fa';
-import './style.scss';
-
+// import { useRef } from "react";
+import { newUserRequest } from "../../store/ducks/usuarios/action";
+import { useDispatch } from "react-redux";
+import Sidebar from "../../components/sidebar";
+import { Redirect } from "react-router";
+import { FaUserAlt } from "react-icons/fa";
+import { useForm } from "react-hook-form";
+import "./style.scss";
 
 const Cadastrar = () => {
+  const { register, handleSubmit, errors } = useForm();
 
-    const inputEmail = useRef<HTMLInputElement>(null);
-    const inputPassword = useRef<HTMLInputElement>(null);
-    const inputName = useRef<HTMLInputElement>(null);
-    const inputRole = useRef<HTMLInputElement>(null)
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const userRole = localStorage.getItem("userRole");
 
-    const userRole = localStorage.getItem('userRole')
+  const cadastro = (dados: any) => {
+    console.log(dados);
+    dispatch(newUserRequest(dados));
+  };
 
-    const cadastro = () => {
-        const email = inputEmail.current?.value
-        const password = inputPassword.current?.value
-        const name = inputName.current?.value
-        const role = inputRole.current?.value
-        
+  return (
+    <div>
+      {userRole !== "admin" && <Redirect to="/home" />}
 
-        const dados = {email, password, name, role} 
-        dispatch(newUserRequest(dados));
-    }
+      <Sidebar />
 
-    return(
-        <div>
+      <a href="/users" className="icon-link">
+        <FaUserAlt size="1.5em" />
+        Usuários
+      </a>
 
-            { 
-                userRole !== 'admin' &&
-                <Redirect to='/home' />
-            }
+      <div className="inputs-form">
+        <h1>Novo colaborador</h1>
+        <form onSubmit={handleSubmit(cadastro)}>
+          {errors.email && <p className="erro">Verifique o e-mail.</p>}
+          <input
+            className="input"
+            name="email"
+            type="email"
+            placeholder="E-mail"
+            ref={register({ required: true })}
+          />
+          {errors.password && (
+            <p className="erro">Mínimo de seis caracteres.</p>
+          )}
+          <input
+            className="input"
+            name="password"
+            type="password"
+            placeholder="Senha inicial"
+            ref={register({ required: true, minLength: 6 })}
+          />
+          {errors.name && <p className="erro">Verifique o nome.</p>}
+          <input
+            className="input"
+            name="name"
+            type="text"
+            placeholder="Nome"
+            ref={register({ required: true, pattern: /^[A-Za-z]+$/i })}
+          />
+          {errors.role && <p className="erro">Selecione uma opção!</p>}
+          <select
+            className="radio"
+            name="role"
+            ref={register({ required: true })}
+          >
+            <option value="admin">Administrador</option>
+            <option value="editor">Editor</option>
+          </select>
 
-            <Sidebar />
-
-            <a href='/users' className='icon-link'>
-                <FaUserAlt size='1.5em' />
-                Usuários
-            </a>
-
-            <div className='inputs-form'>
-                <h1>Novo funcionário</h1>
-
-                <input className='input' type='email' placeholder='E-mail' ref={inputEmail} required />
-                <input className='input' type='password' placeholder='Senha inicial' ref={inputPassword} required />
-                <input className='input' type='text' placeholder='Nome' ref={inputName} required />
-                <input className='input' type='text' placeholder='Editor ou Admin?' ref={inputRole} required />
-                
-                <button className='btn' onClick={cadastro}>Cadastrar</button>
-            </div>
-
-        </div>
-    )
+          <br />
+          <br />
+          <button className="btn" onClick={cadastro}>
+            Cadastrar
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 };
-
 
 export default Cadastrar;

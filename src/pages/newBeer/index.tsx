@@ -1,52 +1,70 @@
-import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { newBeerRequest } from "../../store/ducks/beers/action";
-import Sidebar from '../../components/sidebar';
-import { IoMdBeer } from 'react-icons/io';
+import Sidebar from "../../components/sidebar";
+import { useForm } from "react-hook-form";
+import { IoMdBeer } from "react-icons/io";
+import "./style.modules.scss";
 
 const Produtos = () => {
-    
-    const inputTitle = useRef<HTMLInputElement>(null);
-    const inputPrice = useRef<HTMLInputElement>(null);
-    const inputDescription = useRef<HTMLInputElement>(null);
-    const inputImage = useRef<HTMLInputElement>(null)
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const { register, handleSubmit, errors } = useForm();
 
-    const cadastro = () => {
+  const cadastro = (dados: any) => {
+    dispatch(newBeerRequest(dados));
+  };
 
-        const title = inputTitle.current?.value
-        const price = inputPrice.current?.value
-        const description = inputDescription.current?.value
-        const image = inputImage.current?.value
-        
-        const dados = {title, price, description, image} 
-        dispatch(newBeerRequest(dados));
-    }
+  return (
+    <div>
+      <Sidebar />
 
-    return(
-        <div>
-            <Sidebar />
+      <a href="/products" className="icon-link">
+        <IoMdBeer size="2em" />
+        Produtos
+      </a>
 
-            <a href='/products' className='icon-link'>
-                <IoMdBeer size='2em' />
-                Produtos
-            </a>
-
-            <div className="inputs-form">
-
-                <h1>Novo produto</h1>
-                <input className='input' type='text' placeholder='Nome do produto' ref={inputTitle} required />
-                <input className='input' type='text' placeholder='Preço' ref={inputPrice} required />
-                <input className='input' type='text' placeholder='Descrição' ref={inputDescription} required />
-                <input className='input' type='url' placeholder='Url da imagem' ref={inputImage} required />
-                <button className='btn' onClick={cadastro}>Cadastrar</button>
-
-            </div>
-        </div>
-
-    )
+      <div className="inputs-form">
+        <h1>Novo produto</h1>
+        <form onSubmit={handleSubmit(cadastro)}>
+          {errors.title && <p className="erro">Campo obrigatório.</p>}
+          <input
+            className="input"
+            type="text"
+            name="title"
+            placeholder="Nome do produto"
+            ref={register({ required: true })}
+          />
+          {errors.price && <p className="erro">Campo obrigatório.</p>}
+          <input
+            className="input"
+            type="text"
+            name="price"
+            placeholder="Preço"
+            ref={register({ required: true })}
+          />
+          {errors.description && <p className="erro">Campo obrigatório.</p>}
+          <input
+            className="input"
+            type="text"
+            name="description"
+            placeholder="Descrição"
+            ref={register({ required: true })}
+          />
+          {errors.image && <p className="erro">Campo obrigatório.</p>}
+          <input
+            className="input"
+            type="url"
+            name="image"
+            placeholder="Url da imagem"
+            ref={register({ required: true })}
+          />
+          <button className="btn" onClick={cadastro}>
+            Cadastrar
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 };
-
 
 export default Produtos;

@@ -12,6 +12,10 @@
     overflow: hidden;
     padding: 100px 10px;
     text-align: center;
+    .input {
+        height: 30px;
+        margin-bottom: 15px;
+    }
 }
 
 .icon-link {
@@ -21,3 +25,12 @@
     font-size: 22px;
     padding-right: 50px;
 }
+
+.radio {
+    width: 40%;
+    text-align: center;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+}
+
