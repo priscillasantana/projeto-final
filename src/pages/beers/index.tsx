@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Sidebar from "../../components/sidebar";
 import * as BeerActions from "../../store/ducks/beers/action";
 import "./style.scss";
+import { Redirect } from "react-router";
 import { FaPlus } from "react-icons/fa";
 
 const Beer = () => {
@@ -11,6 +12,8 @@ const Beer = () => {
   const dispatch = useDispatch();
 
   const userRole = localStorage.getItem("userRole");
+
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     dispatch(BeerActions.loadBeerRequest());
@@ -27,6 +30,7 @@ const Beer = () => {
 
   return (
     <div>
+      {!token && <Redirect to="/" />}
       <Sidebar />
       <div className="container-produtos">
         <div className="header">

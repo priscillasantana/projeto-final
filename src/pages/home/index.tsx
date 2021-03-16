@@ -8,6 +8,7 @@ import { IoBeerSharp } from "react-icons/io5";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import "./style.scss";
 import { AiFillHome } from "react-icons/ai";
+import { Redirect } from "react-router";
 
 const Home = () => {
   const beer = useSelector((state: any) => state.reducerBeer.beers);
@@ -15,6 +16,8 @@ const Home = () => {
   const user = useSelector((state: any) => state.reducerUser.user);
 
   const userRole = localStorage.getItem("userRole");
+
+  const token = localStorage.getItem("token");
 
   const dispatch = useDispatch();
 
@@ -32,6 +35,7 @@ const Home = () => {
 
   return (
     <div>
+      {!token && <Redirect to="/" />}
       <Sidebar />
 
       <h1 className="titulo">

@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { loadUserRequest } from "../../store/ducks/usuarios/action";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
@@ -9,8 +8,10 @@ const Login = () => {
   const { register, handleSubmit, errors } = useForm();
 
   const logged = useSelector(
-    (state: any) => state.reducerUser.user.accessToken
+    (state: any) => state.reducerUser?.user?.accessToken
   );
+
+  const token = localStorage.getItem("token");
 
   const dispatch = useDispatch();
 
@@ -49,7 +50,7 @@ const Login = () => {
           </button>
         </form>
 
-        {logged && <Redirect to="/home" />}
+        {token && <Redirect to="/home" />}
       </div>
     </div>
   );

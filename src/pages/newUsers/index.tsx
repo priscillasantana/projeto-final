@@ -14,6 +14,8 @@ const Cadastrar = () => {
 
   const userRole = localStorage.getItem("userRole");
 
+  const token = localStorage.getItem("token");
+
   const cadastro = (dados: any) => {
     console.log(dados);
     dispatch(newUserRequest(dados));
@@ -22,6 +24,7 @@ const Cadastrar = () => {
   return (
     <div>
       {userRole !== "admin" && <Redirect to="/home" />}
+      {!token && <Redirect to="/" />}
 
       <Sidebar />
 

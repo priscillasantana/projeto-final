@@ -4,11 +4,14 @@ import Sidebar from "../../components/sidebar";
 import { useForm } from "react-hook-form";
 import { IoMdBeer } from "react-icons/io";
 import "./style.modules.scss";
+import { Redirect } from "react-router";
 
 const Produtos = () => {
   const dispatch = useDispatch();
 
   const { register, handleSubmit, errors } = useForm();
+
+  const token = localStorage.getItem("token");
 
   const cadastro = (dados: any) => {
     dispatch(newBeerRequest(dados));
@@ -16,6 +19,7 @@ const Produtos = () => {
 
   return (
     <div>
+      {!token && <Redirect to="/" />}
       <Sidebar />
 
       <a href="/products" className="icon-link">
