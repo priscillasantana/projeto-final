@@ -54,6 +54,9 @@
 
 - Redux saga
 
+- Axios
+
+- Sass
 
 
 ## Link do backend:
